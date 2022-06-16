@@ -9,9 +9,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Maven@3
-  inputs:
+Jobs:
+  job: createjar
+  steps:
+  - task: Maven@3
+    inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
@@ -20,6 +22,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean install package'
-
-steps:
+  
+  job: locatejar
+  steps:
   - bash: cd /home/vsts/.m2/repository/com/musicalbum/musicalbum/0.0.1-SNAPSHOT/
