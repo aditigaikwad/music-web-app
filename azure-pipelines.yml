@@ -20,3 +20,6 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean install package'
+
+steps:
+  - bash: cd /home/vsts/.m2/repository/com/musicalbum/musicalbum/0.0.1-SNAPSHOT/
