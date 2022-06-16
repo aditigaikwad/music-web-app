@@ -14,15 +14,13 @@ jobs:
     steps:
     - task: Maven@3
       inputs:
-      mavenPomFile: 'pom.xml'
-      mavenOptions: '-Xmx3072m'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.8'
-      jdkArchitectureOption: 'x64'
-      publishJUnitResults: true
-      testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      goals: 'clean install package'
-  
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        jdkVersionOption: '1.8'
+        mavenOptions: '-Xmx3072m'
+        goals: 'clean install package'
+
   - job: locatejar
     steps:
     - bash: cd /home/vsts/.m2/repository/com/musicalbum/musicalbum/0.0.1-SNAPSHOT/
